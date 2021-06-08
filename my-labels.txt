@@ -3,4 +3,3 @@
 2 paper
 3 metal
 4 trash 
-
