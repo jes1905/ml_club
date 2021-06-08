@@ -22,9 +22,11 @@ import tty
 from cv2 import imread
 from pycoral.utils.dataset import read_label_file
 import vision
+from sense_hat import SenseHat
 
 classifier = vision.Classifier(vision.CLASSIFICATION_MODEL)
 labels = read_label_file(vision.CLASSIFICATION_LABELS)
+sense = SenseHat()
 
 @contextlib.contextmanager
 def nonblocking(f):
@@ -46,6 +48,7 @@ def classify_image(frame):
   score = classes[0].score
   label = labels.get(label_id)
   print(label, score)
+  sense.show_message(label, scroll_speed=0.05)
   return classes
 
 def classify_live():
